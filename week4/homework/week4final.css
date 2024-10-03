@@ -113,7 +113,6 @@ h7{
     font-size: 1.5rem;
 }
 
-/* properly position "Clear All" button */
 #clearAllContainer {
     margin-top: 20px;
     display: flex;
@@ -121,7 +120,7 @@ h7{
 }
 
 #clearAll {
-    background-color: #ff4444; /* Updated color for better distinction */
+    background-color: #ff4444; 
     color: white;
     padding: 10px 20px;
     border-radius: 4px;
