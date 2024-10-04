@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zekun's Number Adder</title>
+    <link rel="stylesheet" type="text/css" href="week4final.css">
+</head>
+
+<body>
+    <div id="ZKKK">
+        <h1>ArtCenter Tuition Fee</h1>
+        <h2>TOOOOOOOO</h2>
+        <h2>MUUUUUUCH</h2>
+        <h2>EXPENSIVE</h2>
+    </div>
+
+    <div id="mc">
+        <div id="sidebar">
+            <h5>Zekun's Bank Account</h5>
+            <p id="nummmmber">0</p>
+            <!-- Operation History -->
+            <h6>Pay History</h6>
+            <!-- Moved summary and total message here -->
+            <div id="summary"></div>
+            <div id="totalMessage"></div>
+            <!-- Operation History List -->
+            <ul id="historyList"></ul>  
+        </div>
+
+    <div id="content">
+        <h4>Pay</h4>
+            <!-- Main Buttons Group -->
+            <div id="buttons">           
+                <button id="-2">-28900</button>
+                <button id="-1">-1</button>
+                <button id="re">RE</button>
+                <button id="+1">+1</button>
+                <button id="+2">+28900</button>  
+            </div>
+            <!-- Clear All Button Positioned Below -->
+            <div id="clearAllContainer">
+                <button id="clearAll">Clear All</button>
+            </div>     
+                
+    </div>
+ </div>
+</body>
+
+<script type="text/javascript">
+
+    var total = 0;
+    let history = [];
+    let operationCount = { additions: 0, subtractions: 0 };
+
+    function updateResult() {
+        document.querySelector("#nummmmber").innerHTML = total;
+    }
+
+    function updateHistory() {
+        let historyContent = "";
+        for (let i = 0; i < history.length; i++) {
+            historyContent += "<li onclick='removeHistoryItem(" + i + ")'>" + history[i] + "</li>";
+        }
+        document.querySelector("#historyList").innerHTML = historyContent;
+    }
+
+    function updateSummary() {
+        document.querySelector("#summary").innerHTML = `Total additions: ${operationCount.additions}, <br> Total subtractions: ${operationCount.subtractions}`;
+    }
+
+    function checkTotal() {
+        if (total > 0) {
+            document.querySelector("#totalMessage").innerHTML = "YOU ARE RICH";
+        } else if (total < 0) {
+            document.querySelector("#totalMessage").innerHTML = "YOU ARE BROKE";
+        } else {
+            document.querySelector("#totalMessage").innerHTML = "ZEROOOOO";
+        }
+    }
+
+    function ClearAll() {
+        total = 0;
+        history = [];
+        operationCount.additions = 0;
+        operationCount.subtractions = 0;
+        updateResult();
+        updateHistory();
+        updateSummary();
+        checkTotal();
+    }
+
+    function removeHistoryItem(index) {
+        history.splice(index, 1);
+        updateHistory();
+    }
+
+   
+    document.getElementById("-2").addEventListener("click", function(){
+        total -= 28900;
+        history.push("-28900");
+        operationCount.subtractions++;
+        updateResult();
+        updateHistory();
+        updateSummary();
+        checkTotal();
+    });
+
+    document.getElementById("-1").addEventListener("click", function(){
+        total -= 1;
+        history.push("-1");
+        operationCount.subtractions++;
+        updateResult();
+        updateHistory();
+        updateSummary();
+        checkTotal();
+    });
+
+    document.getElementById("+2").addEventListener("click", function(){
+        total += 28900;
+        history.push("+28900");
+        operationCount.additions++;
+        updateResult();
+        updateHistory();
+        updateSummary();
+        checkTotal();
+    });
+
+    document.getElementById("+1").addEventListener("click", function(){
+        total += 1;
+        history.push("+1");
+        operationCount.additions++;
+        updateResult();
+        updateHistory();
+        updateSummary();
+        checkTotal();
+    });
+
+    document.getElementById("re").addEventListener("click", function(){
+        total = 0;
+        history.push("Reset");
+        updateResult();
+        updateHistory();
+        checkTotal();
+    });
+
+    document.getElementById("clearAll").addEventListener("click", ClearAll);
+
+</script>
+</html>

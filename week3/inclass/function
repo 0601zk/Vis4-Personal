@@ -1,0 +1,27 @@
+
+var accd = '3.1415'
+
+function shazam(money,age){
+
+
+	console.log(money)
+	console.log(age)
+	//var shazam = 100;
+
+	return (money * 15) + (age * 22);
+
+}
+
+console.log(shazam(1000000000,18));
+
+
+function greet(zk){
+	return"hello," + zk + "!";
+}
+
+var greet = function(zk){
+	return"hello" ;
+}
+
+console.log(
+	greet(zk));
