@@ -1,6 +1,6 @@
 import React from 'react';
 
- function sidebar({total,history}) {
+ function sidebar({total,history,operationCount, checkTotal }) {
 
 	return(
 
@@ -8,9 +8,18 @@ import React from 'react';
 
         <h5>Zekun's Bank Account</h5>
         <p id="nummmmber">{total}</p>
+
         <h6>Pay History</h6>
-        <div id="summary"></div>
-        <div id="totalMessage"></div>
+
+        <div id="summary">
+        <p>Total additions: {operationCount.additions}</p>
+        <p>Total subtractions: {operationCount.subtractions}</p>
+      </div>
+
+        <div id="totalMessage">
+        {checkTotal()}
+      </div>
+
         <ul id="historyList"> 	
 			{
 

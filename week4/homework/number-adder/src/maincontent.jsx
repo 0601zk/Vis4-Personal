@@ -13,8 +13,8 @@ function Maincontent (props){
 				<button id="+2" onClick= {props.onAddTwo}>+28900</button>
 			</div>
             <div id="clearAllContainer">
-                <button id="clearAll">Clear All</button>
-            </div>     
+        <button id="clearAll" onClick={props.onClearAll}>Clear All</button> {/* Corrected here */}
+      </div>    
 		</div>
 
 	);
