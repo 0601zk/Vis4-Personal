@@ -9,7 +9,8 @@ function App() {
   const [history, setHistory] = useState([]);
   const [operationCount, setOperationCount] = useState({ additions: 0, subtractions: 0 });
 
-  // Update total and history based on operation
+
+
   function handleAddone() {
     setTotal(total + 1);
     setHistory([...history, '+1']);
@@ -45,7 +46,7 @@ function App() {
     setOperationCount({ additions: 0, subtractions: 0 });
   }
 
-  // Check total and return corresponding message
+  // Check total return corresponding
   function checkTotal() {
     if (total > 0) {
       return "YOU ARE RICH";
