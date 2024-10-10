@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from './sidebar';
 import Maincontent from './maincontent';
 import Header from './header';
@@ -9,8 +9,7 @@ function App() {
   const [history, setHistory] = useState([]);
   const [operationCount, setOperationCount] = useState({ additions: 0, subtractions: 0 });
 
-
-
+ 
   function handleAddone() {
     setTotal(total + 1);
     setHistory([...history, '+1']);
@@ -46,7 +45,9 @@ function App() {
     setOperationCount({ additions: 0, subtractions: 0 });
   }
 
-  // Check total return corresponding
+
+
+
   function checkTotal() {
     if (total > 0) {
       return "YOU ARE RICH";
@@ -54,6 +55,30 @@ function App() {
       return "YOU ARE BROKE";
     } else {
       return "ZEROOOOO";
+    }
+  }
+
+  
+
+
+  function removeHistoryItem(index) {
+    const itemToRemove = history[index];
+    const newHistory = history.filter((_, i) => i !== index);
+
+    setHistory(newHistory);
+
+
+
+
+    let valueToRemove = 0;
+    if (itemToRemove.includes('+')) {
+      valueToRemove = parseInt(itemToRemove.replace('+', ''));
+      setTotal(total - valueToRemove);
+      setOperationCount({ ...operationCount, additions: operationCount.additions - 1 });
+    } else if (itemToRemove.includes('-')) {
+      valueToRemove = parseInt(itemToRemove.replace('-', ''));
+      setTotal(total + valueToRemove); 
+      setOperationCount({ ...operationCount, subtractions: operationCount.subtractions - 1 });
     }
   }
 
@@ -67,6 +92,8 @@ function App() {
           history={history}
           operationCount={operationCount}
           checkTotal={checkTotal}
+        
+          onRemoveHistoryItem={removeHistoryItem}  
         />
 
         <Maincontent
@@ -83,4 +110,3 @@ function App() {
 }
 
 export default App;
-
