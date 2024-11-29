@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tamagotchi Pet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="screen">
+        <canvas id="petCanvas" width="100" height="100"></canvas>
+        <div id="status">
+          <p>Hunger: <span id="hunger">5</span></p>
+          <p>Happiness: <span id="happiness">5</span></p>
+          <p>Health: <span id="health">5</span></p>
+        </div>
+        <div class="progress-container">
+          <p>Feeding Progress: <span id="progress-count">0</span>/10</p>
+          <div class="progress-bar">
+            <div id="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="feedPet()">Feed</button>
+        <button onclick="playWithPet()">Play</button>
+        <button onclick="healPet()">Heal</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
